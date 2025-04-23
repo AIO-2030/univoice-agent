@@ -1,0 +1,1 @@
+export const isLocalNet = (): boolean => import.meta.env.VITE_DFX_NETWORK === 'local';

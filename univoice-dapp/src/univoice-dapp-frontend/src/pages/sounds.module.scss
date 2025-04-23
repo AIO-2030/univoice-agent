@@ -1,0 +1,11 @@
+.pgMyvoice {
+  overflow-y: scroll;
+  height: calc(100vh - 36px);
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+.pgMyvoice::-webkit-scrollbar {
+  display: none;
+}
+.myvoiceList {
+}

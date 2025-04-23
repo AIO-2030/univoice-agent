@@ -1,0 +1,20 @@
+{
+  "name": "upload_js",
+  "version": "1.0.0",
+  "type": "module",
+  "module": "ESNext",
+  "main": "upload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@dfinity/agent": "^2.0.0",
+    "@dfinity/identity": "^2.0.0",
+    "@dfinity/principal": "^2.0.0",
+    "@dfinity/utils": "^2.4.0",
+    "@ldclabs/ic_oss_ts": "^0.6.5"
+  }
+}

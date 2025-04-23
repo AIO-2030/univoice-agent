@@ -1,0 +1,64 @@
+.task {
+  background-color: #151517;
+  height: 68px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+.actable {
+  cursor: pointer;
+}
+.taskIcon {
+  width: 40px;
+  height: 40px;
+}
+.taskCtx {
+  flex: 1;
+}
+.taskDesc {
+  font-size: 14px;
+  font-weight: 500;
+}
+.rewardsInfo {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 3px;
+  .coin {
+    width: 16px;
+    height: 16px;
+    background: url('@/assets/imgs/icon_uvcoin.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+.go {
+  width: 24px;
+}
+.hiddenGo {
+  display: none;
+}
+.statusIcon {
+  width: 24px;
+  height: 24px;
+}
+.statusChecked {
+  background: url('@/assets/svg/icon_taskdone.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.statusGo {
+  background: url('@/assets/svg/arrow_right.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+} 

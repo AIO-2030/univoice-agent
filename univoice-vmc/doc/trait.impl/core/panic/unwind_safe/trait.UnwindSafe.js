@@ -1,0 +1,3 @@
+(function() {var implementors = {
+"univoice_vmc_backend":[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.80.1/core/panic/unwind_safe/trait.UnwindSafe.html\" title=\"trait core::panic::unwind_safe::UnwindSafe\">UnwindSafe</a> for <a class=\"struct\" href=\"univoice_vmc_backend/struct.StateHeap.html\" title=\"struct univoice_vmc_backend::StateHeap\">StateHeap</a>",1,["univoice_vmc_backend::StateHeap"]]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

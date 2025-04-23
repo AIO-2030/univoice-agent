@@ -1,0 +1,36 @@
+{
+  "canisters": {
+    "mugc-agc-backend": {
+      "candid": "src/mugc-agc-backend/mugc-agc-backend.did",
+      "package": "mugc-agc-backend",
+      "type": "rust",
+      "assets": ["alexa.rpw"]
+    },
+    "mugc-agc-frontend": {
+      "dependencies": [
+        "mugc-agc-backend"
+      ],
+      "source": [
+        "src/mugc-agc-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "src/mugc-agc-frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    },
+    "replica": {
+      "subnet_type": "system"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

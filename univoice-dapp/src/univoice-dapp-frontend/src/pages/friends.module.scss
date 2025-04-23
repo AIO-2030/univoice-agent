@@ -1,0 +1,173 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 38px;
+  .introImg {
+    width: 64px;
+    height: 64px;
+    background: url('@/assets/imgs/gift_box.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 2px;
+  }
+  .introTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .introTxt {
+    font-size: 14px;
+    font-weight: 400;
+    color: #A0A0A0;
+    line-height: 21px;
+    margin: 0;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+}
+.pTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #7F7F83;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 10px;
+  .currentTab {
+    color: #FFFFFF;
+    .currentSymbol {
+      width: 20px;
+      height: 4px;
+      border-radius: 4px;
+      background: -webkit-linear-gradient(0deg, #AB49FE 0%, #5415F5 100%); /* Chrome, Safari */
+      background: linear-gradient(0deg, #AB49FE 0%, #5415F5 100%);
+      margin: 2px auto 0 auto;
+    }
+  }
+  .lnk {
+    cursor: pointer;
+  }
+}
+.friendCount {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  span {
+    color: #6C2CFD;
+    margin-right: 2px;
+  }
+}
+.friend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  .avatar {
+    width: 32px;
+    height: 32px;
+    img {
+      border-radius: 16px;
+      border: none;
+      outline: 0;
+    }
+  }
+  .infoBox {
+    flex: 1;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #2E2E30;
+  }
+  .name {
+    font-size: 14px;
+  }
+  .cnt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #7F7F83;
+    font-size: 14px;
+    gap: 6px;
+    margin-top: 3px;
+    .cntIcon {
+      width: 12px;
+      height: 12px;
+      background: url('@/assets/svg/icon_friends.svg');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  .rewardsInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    font-size: 14px;
+    .coin {
+      width: 16px;
+      height: 16px;
+      background: url('@/assets/imgs/icon_uvcoin.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+.btnInvite {
+  position: fixed;
+  bottom: 140px;
+  width: calc(100% - 38px);
+  height: 56px;
+  background-color: #6C2CFD;
+  border: 1px solid #8955FF;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  .icon {
+    width: 20px;
+    height: 20px;
+    background: url('@/assets/svg/icon_friends.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.myInviteCode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  margin: 20px auto;
+  .copyIcon {
+    width: 16px;
+    height: 16px;
+    background: url('@/assets/svg/icon_copy.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+}
+.inviteTip {
+  font-size: 14px;
+  color: #A0A0A0;
+  text-align: center;
+}

@@ -1,0 +1,160 @@
+// @font-face {
+//   font-family: "PlayfairDisplay";
+//   src: url('@/assets/fonts/PlayfairDisplay-SemiBold.ttf')
+// }
+// @font-face {
+//   font-family: "PublicSans";
+//   src: url('@/assets/fonts/PublicSans-Regular.ttf')
+// }
+@font-face {
+  font-family: "SF-PRO-Display";
+  src: url('@/assets/fonts/SF-Pro-Display-Regular.otf')
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+  
+html, body, #root {
+  min-height: 100vh;
+  width: 100vw;
+  font-family: SF-PRO-Display;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+// .font-pf {
+//   font-family: PlayfairDisplay;
+// }
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+.img-fixed {
+  image-rendering: pixelated;
+  object-fit: cover;
+}
+.aspect-ratio-1-1 {
+  position: relative;
+  height: 0;
+  padding: 50%;
+  .aspect-ratio-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+input, textarea {
+  background: none;
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+.main-container {
+  background-color: #00040A;
+  min-height: 100vh;
+}
+.btm-ph {
+  height: 80px;
+}
+.uvpage {
+  min-height: 100vh;
+  position: relative;
+}
+.uvpage-1 {
+  padding: 18px;
+  padding-bottom: 100px;
+  position: relative;
+}
+.uvpage-2 {
+  padding: 18px;
+  position: relative;
+}
+.page-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.btn-1 {
+  border: 1px solid #8955FF;
+  background-color: #6C2CFD;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.nodata {
+  padding-top: 20px;
+}
+.nodata-txt {
+  color: #A0A0A0;
+  font-size: 14px;
+  text-align: center;
+}
+.modal-dialog {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #00000088;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  border-radius: 12px;
+  background-color: #151517;
+  .md-ctx-wrapper {
+    padding: 20px;
+  }
+  .close-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    // background-image: url('@/assets/svg/icon_close2.svg');
+    // background-size: contain;
+    font-size: 30px;
+    line-height: 12px;
+  }
+  .md-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .md-btn-1 {
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+// background page dont scroll when modal open
+.modal-open {
+  overflow: hidden;
+  height: 100%;
+}
+.top-nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}

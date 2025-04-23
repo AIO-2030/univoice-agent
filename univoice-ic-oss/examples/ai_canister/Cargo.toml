@@ -1,0 +1,23 @@
+[package]
+name = "ai_canister"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = { workspace = true }
+ic-cdk = { workspace = true }
+ic-cdk-timers = { workspace = true }
+ic-stable-structures = { workspace = true }
+ciborium = { workspace = true }
+serde = { workspace = true }
+serde_bytes = { workspace = true }
+getrandom = { workspace = true }
+rand = { version = "0.8", features = ["getrandom"] }
+ic-oss-types = { path = "../../src/ic_oss_types", version = "1.0.0" }
+ic-oss-can = { path = "../../src/ic_oss_can", version = "1.0.0" }

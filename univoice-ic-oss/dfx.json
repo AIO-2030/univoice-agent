@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "ic_oss_bucket": {
+      "candid": "src/ic_oss_bucket/ic_oss_bucket.did",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "package": "ic_oss_bucket",
+      "optimize": "cycles",
+      "type": "rust"
+    },
+    "ic_oss_cluster": {
+      "candid": "src/ic_oss_cluster/ic_oss_cluster.did",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "package": "ic_oss_cluster",
+      "optimize": "cycles",
+      "type": "rust"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

@@ -1,0 +1,108 @@
+.container {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .toast {
+    width: 100%;
+    max-width: 1440px;
+    animation: fadeOut 2s forwards;
+    animation-delay: 6s;
+    padding-left: 5px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    .wrap {
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      background-color: #534b63;
+    }
+    .icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      margin-top: 2px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .ctx {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .ctx_msg {
+      font-size: 14px;
+      line-height: 21px;
+      color: #FFFFFF;
+    }
+    .ctx_info {
+      flex-grow: 1;
+    }
+    .close {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/svg/icon_close.svg');
+      margin-left: 10px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .close:hover {
+      opacity: 0.6;
+    }
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+.t_info {
+  background-color: #418BFB;
+  .title {
+    color: #418BFB;
+  }
+  .icon {
+    background-image: url('@/assets/svg/icon_info.svg');
+  }
+}
+.t_warn {
+  background-color: #EA8B00;
+  .title {
+    color: #EA8B00;
+  }
+  .icon {
+    background-image: url('@/assets/svg/icon_warning.svg');
+  }
+}
+.t_error {
+  background-color: #EB6062;
+  .title {
+    color: #EB6062;
+  }
+  .icon {
+    background-image: url('@/assets/svg/icon_error.svg');
+  }
+}
+.t_success {
+  background-color: #64CA67;
+  .title {
+    color: #64CA67;
+  }
+  .icon {
+    background-image: url('@/assets/svg/icon_success.svg');
+  }
+}

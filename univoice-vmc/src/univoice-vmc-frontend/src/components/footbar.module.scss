@@ -1,0 +1,118 @@
+.container {
+  width: 100%;
+  background: linear-gradient(-2.12deg, #140E22 28%, #231542 100%);
+  .container_wrap {
+    height: 360px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.leftbar {
+  background-image: url("@/assets/imgs/FooterBG@2x.png");
+  background-size: cover;
+  background-position: center center;
+  width: 448px;
+  height: 360px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  .linkbar {
+    background-image: url("@/assets/imgs/bg_foot_lbar.png");
+    background-size: cover;
+    background-position: center center;
+    width: 348px;
+    height: 64px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .btn_img {
+      width: 18px;
+      height: 18px;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+  .copyright {
+    color: #AFAEBA;
+    font-size: 16px;
+  }
+}
+.rightbar {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 66.666667%;
+  .col_panel {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    align-items: center;
+  }
+  .title {
+    color: #EEEEEE;
+    font-size: 32px;
+    padding-top: 77px;
+    margin-bottom: 20px;
+  }
+  .lnk {
+    color: #AFAEBA;
+    font-size: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .lnk:hover {
+    color: #FFFFFF;
+  }
+}
+.btn_split {
+  margin: 0 30px;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: #221C5B;
+}
+.uvlogo {
+  margin-top: 40px;
+  width: 173px;
+  height: 120px;
+  background-image: url("@/assets/svg/LOGO.svg");
+  background-size: cover;
+  background-position: center center;
+}
+.x {
+  background-image: url("@/assets/svg/X.svg");
+}
+.telegram {
+  background-image: url("@/assets/svg/telegram.svg");
+}
+.discord {
+  background-image: url("@/assets/svg/Discord.svg");
+}
+.medium {
+  background-image: url("@/assets/svg/medium.svg");
+}
+.github {
+  background-image: url("@/assets/svg/GitHub.svg");
+}
+.btn_round {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: linear-gradient(180deg, #824BFF 0%, #6C2CFD 100%);
+}
+.btn_round:hover {
+  background: linear-gradient(180deg, #824BFFCC 0%, #6C2CFDCC 100%);
+}
+.btn_round.disable {
+  cursor: auto;
+  background: linear-gradient(180deg, #909090 0%, #606060 100%);
+}

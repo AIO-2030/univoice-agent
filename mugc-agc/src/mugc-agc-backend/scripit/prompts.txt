@@ -1,0 +1,31 @@
+Task Description:
+Analyze the given speech transcription and classify it into one of the following sentiment categories:
+
+Positive – The speaker expresses satisfaction, happiness, or enthusiasm.
+Neutral – The statement is factual, lacks strong emotions, or has balanced feedback.
+Negative – The speaker expresses dissatisfaction, complaints, or criticism.
+Frustrated – The speaker shows repeated dissatisfaction, irritation, or strong frustration due to issues encountered.
+
+Examples:
+Example 1:
+Input: "This voice assistant is amazing! It understands me perfectly and responds quickly."
+Output: Positive
+
+Example 2:
+Input: "The sound quality is decent, and the voice recognition works most of the time."
+Output: Neutral
+
+Example 3:
+Input: "It often misunderstands what I'm saying, which makes it difficult to use."
+Output: Negative
+
+Example 4:
+Input: "I've repeated the same sentence five times, and it still gets it wrong. This is so frustrating!"
+Output: Frustrated
+
+Special Cases & Additional Considerations:
+Mixed Sentiment: If the sentence contains both positive and negative emotions, classify based on the dominant sentiment. Example:
+Input: "The app's interface is great, but the voice recognition is terrible." → Negative
+Sarcasm & Irony: If the statement implies the opposite of its literal meaning, classify based on intent.
+Input: "Oh great, another error. Just what I needed!" → Frustrated
+Unclear or Ambiguous Statements: If the sentiment is unclear, default to Neutral unless context suggests otherwise.

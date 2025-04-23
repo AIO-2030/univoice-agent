@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "**/*.html": {
+      "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:;"
+    },
+    "**/*.js": {
+      "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:;"
+    },
+    "**/*": {
+      "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:;"
+    }
+  }
+}

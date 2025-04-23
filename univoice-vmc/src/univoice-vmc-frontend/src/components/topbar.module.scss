@@ -1,0 +1,251 @@
+.container {
+  height: 88px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 640px) {
+  .container {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+.uvlogo {
+  width: 100px;
+  height: 45px;
+  cursor: pointer;
+  background-image: url("@/assets/svg/logo_top.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.btn_split {
+  margin: 0 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: #6C2CFD;
+}
+.lnkicon {
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.x {
+  background-image: url("@/assets/svg/X_w.svg");
+}
+.telegram {
+  background-image: url("@/assets/svg/telegram_w.svg");
+}
+.btn_round {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #6c2cfd;
+}
+.btn_round:hover {
+  background: linear-gradient(180deg, #824BFF 0%, #6C2CFD 100%);
+}
+.wallet_no_link {
+  position: relative;
+  margin-left: -5px;
+  width: 166px;
+  height: 84px;
+  cursor: pointer;
+  .wallet_no_link_bg {
+    background-image: url("@/assets/imgs/Botton@2x.png");
+    background-size: cover;
+    background-position: center center;
+    width: 166px;
+    height: 84px;
+  }
+  .wallet_no_link_bg:hover {
+    opacity: 0.8;
+  }
+  .ctx {
+    margin-top: -62px;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+.wallet_linked_wrap {
+  background-image: url("@/assets/imgs/bg_wallet_connected.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 219px;
+  height: 84px;
+  margin-left: -5px;
+}
+.wallet_linked {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40px;
+  color: #ffffff;
+  padding: 0 20px;
+  .wallet_icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 1px solid #a1a1a1;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .wallet_txt {
+    font-size: 12px;
+    margin: 0 10px;
+  }
+  .arrow_down {
+    margin-top: -3px;
+    transform: rotate(45deg);
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+  .arrow_up {
+    margin-top: 4px;
+    transform: rotate(-135deg);
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+}
+.profile {
+  position: absolute;
+  z-index: 1;
+  top: 48px;
+  right: -10px;
+  border-radius: 15px;
+  padding: 17px;
+  color: #999999;
+  background-color: rgb(37, 32, 52, 0.9);// #252034;
+  font-size: 12px;
+  cursor: auto;
+  .r {
+    margin-bottom: 16px;
+  }
+  .split {
+    border-top: 1px solid #393843;
+  }
+  .label {
+    margin-bottom: 8px;
+  }
+  .principal_info {
+    background-color: #14111d;
+    border-radius: 5px;
+    padding: 3px 12px;
+    font-size: 12px;
+    color: #ffffff;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    .copy {
+      margin-left: 6px;
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
+      background-image: url("@/assets/svg/copy.svg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+  .balance {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-image: url("@/assets/imgs/bg_balance.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .myuv_border {
+    border-radius: 5px;
+    background: linear-gradient(-10deg, #282729 0%, #aeaeae 100%);
+    background-clip: padding-box;
+    padding: 1px;
+    width: 100%;
+    height: 37px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .myuv {
+    border-radius: 5px;
+    width: 100%;
+    height: 36px;
+    background-color: #121212;
+    color: #FFFFFF;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      width: 14px;
+      height: 14px;
+      background-image: url("@/assets/svg/arrow_r.svg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      margin-left: 6px;
+    }
+  }
+  .bottom_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn_disconn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 20px;
+    margin-top: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    .icon {
+      width: 14px;
+      height: 14px;
+      background-image: url("@/assets/svg/disconn.svg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      margin-right: 6px;
+    }
+  }
+}
+.wallet_icon_plug {
+  background-image: url("@/assets/imgs/icon_plug.png");
+}

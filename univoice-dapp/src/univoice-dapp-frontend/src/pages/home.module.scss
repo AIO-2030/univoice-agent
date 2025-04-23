@@ -1,0 +1,176 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+.homeBody {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.bodyCtx {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .homeIp {
+    width: 80%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slogan {
+    text-align: center;
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 700;
+    // background: -webkit-linear-gradient(90deg, #B14DFF 0%, #5415F5 100%); /* Chrome, Safari */
+    // background: linear-gradient(90deg, #B14DFF 0%, #5415F5 100%);
+    // -webkit-background-clip: text; /* Chrome, Safari */
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent; /* Chrome, Safari */
+    // color: transparent;
+    margin-bottom: 80px;
+  }
+}
+.userpanel {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+.userInfo {
+  border: 1px solid #323233;
+  border-radius: 13px;
+  height: 36px;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #0E0E0E;
+  margin-bottom: 8px;
+  cursor: pointer;
+  .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    background: url('@/assets/imgs/user_avatar.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 6px;
+  }
+}
+.inviteCode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.inviteCodeWrapper {
+  border: 1px solid #323233;
+  border-radius: 13px;
+  height: 36px;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+.wallet {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+.walletWrapper {
+  border: 1px solid #323233;
+  border-radius: 13px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: -webkit-linear-gradient(0deg, #0E0E0E 0%, #252525 100%); /* Chrome, Safari */
+  background: linear-gradient(0deg, #0E0E0E 0%, #252525 100%);
+  .walletIcon {
+    width: 26px;
+    height: 26px;
+    background: url('@/assets/svg/icon_wallet.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+.record {
+  position: fixed;
+  bottom: 120px;
+}
+.btnOpenRecord {
+  background: -webkit-linear-gradient(0deg, #B14DFF 0%, #5415F5 100%); /* Chrome, Safari */
+  background: linear-gradient(0deg, #B14DFF 0%, #5415F5 100%);
+  width: 228px;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.gradientHeading {
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 120px;
+  letter-spacing: 5px;
+  text-align: center;
+  background: -o-linear-gradient(45deg,#ff8a00,#e52e71,#044bea,#7a00ff);
+  background: linear-gradient(45deg,#ff8a00,#e52e71,#044bea,#7a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  -webkit-animation: gradient-text 8s ease infinite;
+          animation: gradient-text 8s ease infinite;
+  
+}
+@-webkit-keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+    50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+    50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.mRecord .modalContent {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-height: 100vh;
+  background-color: #24232a;
+  border-radius: 20px 20px 0 0;
+}

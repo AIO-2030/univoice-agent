@@ -1,0 +1,137 @@
+.btm {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.btmWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: transparent;
+}
+.btmPart {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+  justify-content: space-around;
+  // background-color: #242329;
+  background: -webkit-linear-gradient(0deg, #15121F 0%, #292435 100%); /* Chrome, Safari */
+  background: linear-gradient(0deg, #15121F 0%, #292435 100%);
+}
+.leftbg {
+  border-top-left-radius: 16px;
+}
+.rightbg {
+  border-top-right-radius: 16px;
+}
+.centerMenu {
+  width: 131px;
+  height: 80px;
+  position: relative;
+  // background-color: #242329;
+  .bgWraper {
+    position: relative;
+    overflow: hidden;
+    width: 131px;
+    height: 80px;
+    background: url('@/assets/svg/bg_centermenu.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    // .bg {
+    //   width: 80px;
+    //   height: 80px;
+    //   border-radius: 70px;
+    //   // background-color: #00040A;
+    //   background-color: transparent;
+    //   margin-top: -40px;
+    // }
+  }
+
+}
+.btnCenter {
+//   margin-top: -45px;
+  position: absolute;
+  top: -30px;
+  left: 38px;
+  width: 56px;
+  height: 56px;
+  border-radius: 70px;
+  cursor: pointer;
+  background: -webkit-linear-gradient(0deg, #B14DFF 0%, #5415F5 100%); /* Chrome, Safari */
+  background: linear-gradient(0deg, #B14DFF 0%, #5415F5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .logo {
+    width: 50px;
+    height: 50px;
+    background: url('@/assets/svg/logo.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+.menu {
+  width: 70px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .txt {
+    color: #A3AEB8;
+    font-size: 12px;
+  }
+}
+.menu.active {
+  cursor: default;
+  .txt {
+    background: -webkit-linear-gradient(0deg, #B14DFF 0%, #5415F5 100%); /* Chrome, Safari */
+    background: linear-gradient(0deg, #B14DFF 0%, #5415F5 100%);
+    -webkit-background-clip: text; /* Chrome, Safari */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Chrome, Safari */
+    color: transparent;
+  }
+}
+.imgHome {
+  background: url('@/assets/svg/menu_home.svg');
+}
+.imgTask {
+  background: url('@/assets/svg/menu_task.svg');
+}
+.imgDashboard {
+  background: url('@/assets/svg/menu_dashboard.svg');
+}
+.imgCreator {
+  background: url('@/assets/svg/menu_creator.svg');
+}
+.imgHome, .imgTask, .imgDashboard, .imgCreator {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.active {
+  .imgHome {
+    background: url('@/assets/svg/menu_home_active.svg');
+  }
+  .imgTask {
+    background: url('@/assets/svg/menu_task_active.svg');
+  }
+  .imgDashboard {
+    background: url('@/assets/svg/menu_dashboard_active.svg');
+  }
+  .imgCreator {
+    background: url('@/assets/svg/menu_creator_active.svg');
+  }
+  .imgHome, .imgTask, .imgDashboard, .imgCreator {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

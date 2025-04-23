@@ -1,0 +1,391 @@
+type Account = record { owner : principal; subaccount : opt Subaccount };
+type Account__1 = record { owner : principal; subaccount : opt vec nat8 };
+type Account__2 = record { owner : principal; subaccount : opt Subaccount };
+type Account__3 = record { owner : principal; subaccount : opt Subaccount__1 };
+type ApprovalInfo = record {
+  memo : opt vec nat8;
+  from_subaccount : opt vec nat8;
+  created_at_time : opt nat64;
+  expires_at : opt nat64;
+  spender : Account__3;
+};
+type ApproveCollectionArg = record { approval_info : ApprovalInfo };
+type ApproveCollectionError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Duplicate : record { duplicate_of : nat };
+  InvalidSpender;
+  CreatedInFuture : record { ledger_time : nat64 };
+  GenericBatchError : record { message : text; error_code : nat };
+  TooOld;
+};
+type ApproveCollectionResult = variant {
+  Ok : nat;
+  Err : ApproveCollectionError;
+};
+type ApproveTokenArg = record { token_id : nat; approval_info : ApprovalInfo };
+type ApproveTokenError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Duplicate : record { duplicate_of : nat };
+  InvalidSpender;
+  NonExistingTokenId;
+  Unauthorized;
+  CreatedInFuture : record { ledger_time : nat64 };
+  GenericBatchError : record { message : text; error_code : nat };
+  TooOld;
+};
+type ApproveTokenResult = variant { Ok : nat; Err : ApproveTokenError };
+type ArchivedTransactionResponse = record {
+  args : vec TransactionRange__1;
+  callback : GetTransactionsFn;
+};
+type BalanceOfRequest = vec Account__1;
+type BalanceOfResponse = vec nat;
+type BlockType = record { url : text; block_type : text };
+type BlockType__1 = record { url : text; block_type : text };
+type BurnNFTBatchError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Unauthorized;
+  CreatedInFuture : record { ledger_time : nat64 };
+  TooOld;
+};
+type BurnNFTBatchResponse = variant {
+  Ok : vec BurnNFTItemResponse;
+  Err : BurnNFTBatchError;
+};
+type BurnNFTError = variant {
+  GenericError : record { message : text; error_code : nat };
+  NonExistingTokenId;
+  InvalidBurn;
+};
+type BurnNFTItemResponse = record { result : BurnNFTResult; token_id : nat };
+type BurnNFTRequest = record {
+  memo : opt vec nat8;
+  tokens : vec nat;
+  created_at_time : opt nat64;
+};
+type BurnNFTResult = variant { Ok : nat; Err : BurnNFTError };
+type CandyShared = variant {
+  Int : int;
+  Map : vec record { text; CandyShared };
+  Nat : nat;
+  Set : vec CandyShared;
+  Nat16 : nat16;
+  Nat32 : nat32;
+  Nat64 : nat64;
+  Blob : vec nat8;
+  Bool : bool;
+  Int8 : int8;
+  Ints : vec int;
+  Nat8 : nat8;
+  Nats : vec nat;
+  Text : text;
+  Bytes : vec nat8;
+  Int16 : int16;
+  Int32 : int32;
+  Int64 : int64;
+  Option : opt CandyShared;
+  Floats : vec float64;
+  Float : float64;
+  Principal : principal;
+  Array : vec CandyShared;
+  ValueMap : vec record { CandyShared; CandyShared };
+  Class : vec PropertyShared;
+};
+type CollectionApproval = record {
+  memo : opt vec nat8;
+  from_subaccount : opt vec nat8;
+  created_at_time : opt nat64;
+  expires_at : opt nat64;
+  spender : Account__3;
+};
+type DataCertificate = record { certificate : vec nat8; hash_tree : vec nat8 };
+type Example = service {
+  assign : (nat, Account__2) -> (nat);
+  get_tip : () -> (Tip) query;
+  icrc10_supported_standards : () -> (SupportedStandards__1) query;
+  icrc37_approve_collection : (vec ApproveCollectionArg) -> (
+      vec opt ApproveCollectionResult,
+    );
+  icrc37_approve_tokens : (vec ApproveTokenArg) -> (vec opt ApproveTokenResult);
+  icrc37_get_collection_approvals : (
+      Account__2,
+      opt CollectionApproval,
+      opt nat,
+    ) -> (vec CollectionApproval) query;
+  icrc37_get_token_approvals : (vec nat, opt TokenApproval, opt nat) -> (
+      vec TokenApproval,
+    ) query;
+  icrc37_is_approved : (vec IsApprovedArg) -> (vec bool) query;
+  icrc37_max_approvals_per_token_or_collection : () -> (opt nat) query;
+  icrc37_max_revoke_approvals : () -> (opt nat) query;
+  icrc37_revoke_collection_approvals : (vec RevokeCollectionApprovalArg) -> (
+      vec opt RevokeCollectionApprovalResult,
+    );
+  icrc37_revoke_token_approvals : (vec RevokeTokenApprovalArg) -> (
+      vec opt RevokeTokenApprovalResult,
+    );
+  icrc37_transfer_from : (vec TransferFromArg) -> (vec opt TransferFromResult);
+  icrc3_get_archives : (GetArchivesArgs) -> (GetArchivesResult) query;
+  icrc3_get_blocks : (vec TransactionRange) -> (GetTransactionsResult) query;
+  icrc3_get_tip_certificate : () -> (opt DataCertificate) query;
+  icrc3_supported_block_types : () -> (vec BlockType__1) query;
+  icrc7_atomic_batch_transfers : () -> (opt bool) query;
+  icrc7_balance_of : (BalanceOfRequest) -> (BalanceOfResponse) query;
+  icrc7_collection_metadata : () -> (vec record { text; Value }) query;
+  icrc7_default_take_value : () -> (opt nat) query;
+  icrc7_description : () -> (opt text) query;
+  icrc7_logo : () -> (opt text) query;
+  icrc7_max_memo_size : () -> (opt nat) query;
+  icrc7_max_query_batch_size : () -> (opt nat) query;
+  icrc7_max_take_value : () -> (opt nat) query;
+  icrc7_max_update_batch_size : () -> (opt nat) query;
+  icrc7_name : () -> (text) query;
+  icrc7_owner_of : (OwnerOfRequest) -> (OwnerOfResponse) query;
+  icrc7_permitted_drift : () -> (opt nat) query;
+  icrc7_supply_cap : () -> (opt nat) query;
+  icrc7_symbol : () -> (text) query;
+  icrc7_token_metadata : (vec nat) -> (
+      vec opt vec record { text; Value },
+    ) query;
+  icrc7_tokens : (opt nat, opt nat) -> (vec nat) query;
+  icrc7_tokens_of : (Account__2, opt nat, opt nat) -> (vec nat) query;
+  icrc7_total_supply : () -> (nat) query;
+  icrc7_transfer : (vec TransferArgs) -> (vec opt TransferResult);
+  icrc7_tx_window : () -> (opt nat) query;
+  icrcX_burn : (BurnNFTRequest) -> (BurnNFTBatchResponse);
+  icrcX_mint : (SetNFTRequest) -> (vec SetNFTResult);
+  init : () -> ();
+};
+type GetArchivesArgs = record { from : opt principal };
+type GetArchivesResult = vec GetArchivesResultItem;
+type GetArchivesResultItem = record {
+  end : nat;
+  canister_id : principal;
+  start : nat;
+};
+type GetTransactionsFn = func (vec TransactionRange__1) -> (
+    GetTransactionsResult__1,
+  ) query;
+type GetTransactionsResult = record {
+  log_length : nat;
+  blocks : vec record { id : nat; block : Value__2 };
+  archived_blocks : vec ArchivedTransactionResponse;
+};
+type GetTransactionsResult__1 = record {
+  log_length : nat;
+  blocks : vec record { id : nat; block : Value__2 };
+  archived_blocks : vec ArchivedTransactionResponse;
+};
+type IndexType = variant { Stable; StableTyped; Managed };
+type InitArgs = opt record {
+  deployer : principal;
+  max_approvals : opt nat;
+  max_approvals_per_token_or_collection : opt nat;
+  settle_to_approvals : opt nat;
+  max_revoke_approvals : opt nat;
+  collection_approval_requires_token : opt bool;
+};
+type InitArgs__1 = opt InitArgs__2;
+type InitArgs__2 = record {
+  maxRecordsToArchive : nat;
+  archiveIndexType : IndexType;
+  maxArchivePages : nat;
+  settleToRecords : nat;
+  archiveCycles : nat;
+  maxActiveRecords : nat;
+  maxRecordsInArchiveInstance : nat;
+  archiveControllers : opt opt vec principal;
+  supportedBlocks : vec BlockType;
+};
+type InitArgs__3 = opt record {
+  deployer : principal;
+  allow_transfers : opt bool;
+  supply_cap : opt nat;
+  tx_window : opt nat;
+  burn_account : opt Account;
+  default_take_value : opt nat;
+  logo : opt text;
+  permitted_drift : opt nat;
+  name : opt text;
+  description : opt text;
+  max_take_value : opt nat;
+  max_update_batch_size : opt nat;
+  max_query_batch_size : opt nat;
+  max_memo_size : opt nat;
+  supported_standards : opt SupportedStandards;
+  symbol : opt text;
+};
+type IsApprovedArg = record {
+  token_id : nat;
+  from_subaccount : opt vec nat8;
+  spender : Account__3;
+};
+type NFTInput = variant {
+  Int : int;
+  Map : vec record { text; CandyShared };
+  Nat : nat;
+  Set : vec CandyShared;
+  Nat16 : nat16;
+  Nat32 : nat32;
+  Nat64 : nat64;
+  Blob : vec nat8;
+  Bool : bool;
+  Int8 : int8;
+  Ints : vec int;
+  Nat8 : nat8;
+  Nats : vec nat;
+  Text : text;
+  Bytes : vec nat8;
+  Int16 : int16;
+  Int32 : int32;
+  Int64 : int64;
+  Option : opt CandyShared;
+  Floats : vec float64;
+  Float : float64;
+  Principal : principal;
+  Array : vec CandyShared;
+  ValueMap : vec record { CandyShared; CandyShared };
+  Class : vec PropertyShared;
+};
+type OwnerOfRequest = vec nat;
+type OwnerOfResponse = vec opt Account__1;
+type PropertyShared = record {
+  value : CandyShared;
+  name : text;
+  immutable : bool;
+};
+type RevokeCollectionApprovalArg = record {
+  memo : opt vec nat8;
+  from_subaccount : opt vec nat8;
+  created_at_time : opt nat64;
+  spender : opt Account__3;
+};
+type RevokeCollectionApprovalError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Duplicate : record { duplicate_of : nat };
+  Unauthorized;
+  CreatedInFuture : record { ledger_time : nat64 };
+  ApprovalDoesNotExist;
+  GenericBatchError : record { message : text; error_code : nat };
+  TooOld;
+};
+type RevokeCollectionApprovalResult = variant {
+  Ok : nat;
+  Err : RevokeCollectionApprovalError;
+};
+type RevokeTokenApprovalArg = record {
+  token_id : nat;
+  memo : opt vec nat8;
+  from_subaccount : opt vec nat8;
+  created_at_time : opt nat64;
+  spender : opt Account__3;
+};
+type RevokeTokenApprovalError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Duplicate : record { duplicate_of : nat };
+  NonExistingTokenId;
+  Unauthorized;
+  CreatedInFuture : record { ledger_time : nat64 };
+  ApprovalDoesNotExist;
+  GenericBatchError : record { message : text; error_code : nat };
+  TooOld;
+};
+type RevokeTokenApprovalResult = variant {
+  Ok : nat;
+  Err : RevokeTokenApprovalError;
+};
+type SetNFTError = variant {
+  GenericError : record { message : text; error_code : nat };
+  TokenExists;
+  NonExistingTokenId;
+  CreatedInFuture : record { ledger_time : nat64 };
+  TooOld;
+};
+type SetNFTItemRequest = record {
+  token_id : nat;
+  owner : opt Account;
+  metadata : NFTInput;
+  memo : opt vec nat8;
+  override : bool;
+  created_at_time : opt nat64;
+};
+type SetNFTRequest = vec SetNFTItemRequest;
+type SetNFTResult = variant {
+  Ok : opt nat;
+  Err : SetNFTError;
+  GenericError : record { message : text; error_code : nat };
+};
+type Subaccount = vec nat8;
+type Subaccount__1 = vec nat8;
+type SupportedStandards = vec record { url : text; name : text };
+type SupportedStandards__1 = vec record { url : text; name : text };
+type Tip = record {
+  last_block_index : vec nat8;
+  hash_tree : vec nat8;
+  last_block_hash : vec nat8;
+};
+type TokenApproval = record { token_id : nat; approval_info : ApprovalInfo };
+type TransactionRange = record { start : nat; length : nat };
+type TransactionRange__1 = record { start : nat; length : nat };
+type TransferArgs = record {
+  to : Account__1;
+  token_id : nat;
+  memo : opt vec nat8;
+  from_subaccount : opt vec nat8;
+  created_at_time : opt nat64;
+};
+type TransferError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Duplicate : record { duplicate_of : nat };
+  NonExistingTokenId;
+  Unauthorized;
+  CreatedInFuture : record { ledger_time : nat64 };
+  InvalidRecipient;
+  GenericBatchError : record { message : text; error_code : nat };
+  TooOld;
+};
+type TransferFromArg = record {
+  to : Account__3;
+  spender_subaccount : opt vec nat8;
+  token_id : nat;
+  from : Account__3;
+  memo : opt vec nat8;
+  created_at_time : opt nat64;
+};
+type TransferFromError = variant {
+  GenericError : record { message : text; error_code : nat };
+  Duplicate : record { duplicate_of : nat };
+  NonExistingTokenId;
+  Unauthorized;
+  CreatedInFuture : record { ledger_time : nat64 };
+  InvalidRecipient;
+  GenericBatchError : record { message : text; error_code : nat };
+  TooOld;
+};
+type TransferFromResult = variant { Ok : nat; Err : TransferFromError };
+type TransferResult = variant { Ok : nat; Err : TransferError };
+type Value = variant {
+  Int : int;
+  Map : vec record { text; Value__1 };
+  Nat : nat;
+  Blob : vec nat8;
+  Text : text;
+  Array : vec Value__1;
+};
+type Value__1 = variant {
+  Int : int;
+  Map : vec record { text; Value__1 };
+  Nat : nat;
+  Blob : vec nat8;
+  Text : text;
+  Array : vec Value__1;
+};
+type Value__2 = variant {
+  Int : int;
+  Map : vec record { text; Value__2 };
+  Nat : nat;
+  Blob : vec nat8;
+  Text : text;
+  Array : vec Value__2;
+};
+service : Example

@@ -1,0 +1,55 @@
+.panel_chart {
+  background-color: #F2F2F2;
+  border-radius: 12px;
+  padding: 36px 20px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 36px;
+  .chart {
+    width: 248px;
+    height: 188px;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 12px;
+    margin-right: 10px;
+    padding: 10px;
+    .wrap {
+      width: 248px;
+      height: 188px;
+      background-color: #FFFFFF;
+      border-radius: 12px;
+    }
+  }
+  .label {
+    font-size: 16px;
+    color: #666666;
+    margin-top: 10px;
+  }
+  .intro {
+    font-size: 18px;
+    color: #333333;
+  }
+}
+@media (min-width: 640px) {
+  .panel_chart {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+}
+@media (min-width: 1280px) {
+  .panel_chart {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 768px) {
+  .panel_chart {
+    .card {
+      display: flex;
+      flex-direction: row;
+    }
+    .label {
+      margin-top: 40px;
+    }
+  }
+}

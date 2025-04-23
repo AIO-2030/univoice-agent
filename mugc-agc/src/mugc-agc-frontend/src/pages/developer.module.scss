@@ -1,0 +1,57 @@
+.develop_form_ctx {
+  position: relative;
+  margin-bottom: 70px;
+  .title {
+    color: #FFFFFF;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+  }
+  .ipt_area {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #FFFFFF;
+  }
+  .btn {
+    width: 320px;
+    height: 48px;
+    font-size: 16px;
+    margin: 0 auto;
+  }
+  .textareainput {
+    padding: 0;
+    height: 500px;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    background-color: #FFFFFF;
+    border: none;
+    width: 100%;
+  }
+  .textareainputslim {
+    padding: 0;
+    height: 500px;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    background-color: #FFFFFF;
+    border: none;
+    width: 100%;
+  }
+}
+.block_title {
+  color: #FFFFFF;
+  font-size: 28px;
+  line-height: 28px;
+  margin-top: 120px;
+  margin-bottom: 28px;
+}
+.assets_row {
+  // grid-template-columns: 280px 200px 300px 300px 280px;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}

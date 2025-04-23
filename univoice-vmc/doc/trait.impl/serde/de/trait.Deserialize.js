@@ -1,0 +1,3 @@
+(function() {var implementors = {
+"univoice_vmc_backend":[["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde/1.0.217/serde/de/trait.Deserialize.html\" title=\"trait serde::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"struct\" href=\"univoice_vmc_backend/struct.StateHeap.html\" title=\"struct univoice_vmc_backend::StateHeap\">StateHeap</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

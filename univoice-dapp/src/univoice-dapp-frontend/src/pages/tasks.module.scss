@@ -1,0 +1,54 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 38px;
+  .introImg {
+    width: 64px;
+    height: 64px;
+    background: url('@/assets/imgs/gift_box.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 2px;
+  }
+  .introTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .introTxt {
+    font-size: 14px;
+    font-weight: 400;
+    color: #A0A0A0;
+    line-height: 21px;
+    margin: 0;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+}
+.pTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #7F7F83;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 10px;
+  .currentTab {
+    color: #FFFFFF;
+    .currentSymbol {
+      width: 20px;
+      height: 4px;
+      border-radius: 4px;
+      background: -webkit-linear-gradient(0deg, #AB49FE 0%, #5415F5 100%); /* Chrome, Safari */
+      background: linear-gradient(0deg, #AB49FE 0%, #5415F5 100%);
+      margin: 2px auto 0 auto;
+    }
+  }
+  .lnk {
+    cursor: pointer;
+  }
+}

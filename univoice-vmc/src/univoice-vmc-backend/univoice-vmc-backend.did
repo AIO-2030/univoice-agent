@@ -1,0 +1,197 @@
+
+type TransferArgs = record { to_account : Account; amount : nat };
+type Account = record { owner : principal; subaccount : opt blob };
+type Result = variant { Ok : nat; Err : text };
+type BlockIndex = nat;
+type NumTokens = nat;
+type TxIndex = nat;
+type Timestamp = nat64;
+type Tokens = nat;
+
+type Subscriber = record {
+    topic:text;
+  };
+type MinerTxState = variant {
+   Prepared:text;
+   Claimed:text;
+};
+
+type TransferTxState = variant {
+   WaitClaim;
+    Claimed;
+};
+
+type ComfyUIPayload =
+  record {
+    promt_id:text;
+    client_id:text;
+    ai_node:text;
+    app_info:text;
+    wk_id:text;
+    voice_key:text;
+    deduce_asset_key:text;
+    status:text;
+    gmt_datatime:Timestamp;
+  };
+
+type WorkLoadLedgerItem =
+  record {
+    wkload_id : BlockIndex;
+    work_load : ComfyUIPayload;
+    block_tokens: NumTokens;
+    token_pool:text;
+    nft_pool:text;
+    mining_status : MinerTxState;
+  };
+
+type Burn = record {
+    from : Account;
+    memo : opt vec nat8;
+    created_at_time : opt nat64;
+    amount : nat;
+    spender : opt Account;
+};
+
+type Mint = record {
+    to : Account;
+    memo : opt vec nat8;
+    created_at_time : opt nat64;
+    amount : nat;
+};
+
+type Approve = record {
+    fee : opt nat;
+    from : Account;
+    memo : opt vec nat8;
+    created_at_time : opt nat64;
+    amount : nat;
+    expected_allowance : opt nat;
+    expires_at : opt nat64;
+    spender : Account;
+};
+
+type Transfer = record {
+    to : Account;
+    fee : opt nat;
+    from : Account;
+    memo : opt vec nat8;
+    created_at_time : opt nat64;
+    amount : nat;
+    spender : opt Account;
+};
+
+type Transaction = record {
+    burn : opt Burn;
+    kind : text;
+    mint : opt Mint;
+    approve : opt Approve;
+    timestamp : nat64;
+    transfer : opt Transfer;
+};
+
+type Event0301008 = record {
+  topic:text;
+  payload:WorkLoadLedgerItem;
+
+};
+
+type UnvMinnerLedgerRecord= record {
+     minner_principalid:text;
+     meta_workload:WorkLoadLedgerItem;
+     block_index:opt BlockIndex;
+     trans_tx_index:opt TxIndex;
+     tokens:NumTokens;
+     gmt_datetime:Timestamp;
+     gmt_claim_time:Timestamp;
+     biz_state:TransferTxState;
+
+};
+
+type MinerJnlPageniaze = record {
+    total_log:nat64;
+    ledgers:vec UnvMinnerLedgerRecord;
+};
+
+type NftUnivoicePricipal = record {
+     owners:vec text
+};
+
+type UserIdentityInfo = record {
+    user_id:text;
+    principalid_txt:text;
+    user_nick:text;
+};
+
+type MinerWaitClaimBalance = record {
+     pricipalid_txt:text;
+     tokens:NumTokens; 
+};
+
+type TransactionWithId = record {
+    id : BlockIndex;
+    transaction : Transaction;
+};
+
+type GetTransactions = record {
+    balance : Tokens;
+    transactions : vec TransactionWithId;
+    oldest_tx_id : opt BlockIndex;
+};
+
+type GetTransactionsErr = record {
+    message : text;
+};
+
+type GetAccountTransactionsArgs = record {
+    account : Account;
+    start : opt BlockIndex;
+    max_results : nat;
+};
+
+type GetTransactionsResult = variant {
+    Ok : GetTransactions;
+    Err : GetTransactionsErr;
+};
+
+type MainSiteSummary = record {
+    listener_count:nat64;
+    aigcblock_created_number:BlockIndex;
+    token_per_block:NumTokens;
+    token_pool_balance:NumTokens;
+};
+
+type ChakraItem = record {
+    pricipalid_txt:text;
+    cnt1:nat;
+    cnt2:nat;
+    cnt3:nat;
+    cnt4:nat;
+    cnt5:nat;
+    cnt6:nat;
+    cnt7:nat;
+};
+
+
+service : {
+    "greet": (text) -> (text) query;
+    "transfer" : (TransferArgs) -> (Result);
+    "query_poll_balance" :() -> (Result) ;
+    "setup_subscribe": (principal,text) -> ();
+    "publish_0301008":(Event0301008) ->(Result);
+    "get_all_miner_jnl":() ->(opt vec UnvMinnerLedgerRecord) query;
+    "get_all_miner_jnl_with_principalid":(text,  nat64,  nat64,) ->(MinerJnlPageniaze) query;
+    "claim_to_account_from_index":(BlockIndex) ->(Result);
+    "call_unvoice_for_ext_nft":(NftUnivoicePricipal) ->(Result);
+    "sync_userinfo_identity":(vec UserIdentityInfo) ->(Result);
+    "gener_nft_owner_wait_claims":(text)->(MinerWaitClaimBalance) query;
+    "get_user_balance": (principal) -> (Result);
+    "get_account_transactions": (GetAccountTransactionsArgs) -> (GetTransactionsResult);
+    "get_miner_license":(text)->(vec nat) ;
+    "sum_unclaimed_mint_ledger_onceday":(text) ->(nat) query;
+    "get_total_listener":() -> (opt nat64) query;
+    "get_main_site_summary":() ->( MainSiteSummary);
+    "sum_claimed_mint_ledger":(text) -> (NumTokens);
+    "claim_to_account_by_principal":(text) ->(Result);
+    "query_chakra_data":(text) -> (ChakraItem) query;
+    "update_chakra":(ChakraItem)->(Result);
+}

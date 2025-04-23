@@ -1,0 +1,7 @@
+(
+  record {
+    icrc3_args : InitArgs__1;
+    icrc37_args : opt InitArgs;
+    icrc7_args : opt InitArgs__3;
+  },
+)

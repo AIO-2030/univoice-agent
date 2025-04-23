@@ -1,0 +1,29 @@
+[package]
+name = "ic_oss_cluster"
+description = "An ICP smart contract and the manager of the ic-oss cluster."
+publish = false
+repository = "https://github.com/ldclabs/ic-oss/tree/main/src/ic_oss_cluster"
+version = "1.0.0"
+edition.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = { workspace = true }
+futures = { workspace = true }
+ic-cdk = { workspace = true }
+ic-cdk-timers = { workspace = true }
+ic-stable-structures = { workspace = true }
+ciborium = { workspace = true }
+hex = { workspace = true }
+serde = { workspace = true }
+serde_bytes = { workspace = true }
+getrandom = { workspace = true }
+ed25519-dalek = { workspace = true }
+ic-oss-types = { path = "../ic_oss_types", version = "1.0.0" }

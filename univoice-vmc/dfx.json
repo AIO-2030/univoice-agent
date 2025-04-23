@@ -1,0 +1,40 @@
+{
+  "canisters": {
+    "univoice-vmc-backend": {
+      "candid": "src/univoice-vmc-backend/univoice-vmc-backend.did",
+      "package": "univoice-vmc-backend",
+      "type": "rust"
+    },
+    "univoice-vmc-frontend": {
+      "dependencies": [
+        "univoice-vmc-backend"
+      ],
+      "source": [
+        "src/univoice-vmc-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "univoice-vmc-frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    },
+    "replica": {
+      "subnet_type": "system"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943"
+    },
+    "ic": {
+      "providers": ["https://ic0.app/"],
+      "type": "persistent"
+    }
+  },
+  
+  "output_env_file": ".env",
+  "version": 1
+}

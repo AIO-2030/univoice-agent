@@ -1,0 +1,19 @@
+[package]
+name = "ic-oss-can"
+description = "A Rust library for implementing large file storage in ICP canisters"
+publish = true
+repository = "https://github.com/ldclabs/ic-oss/tree/main/src/ic_oss_can"
+version = "1.0.0"
+edition.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license.workspace = true
+
+[dependencies]
+candid = { workspace = true }
+serde = { workspace = true }
+serde_bytes = { workspace = true }
+ciborium = { workspace = true }
+ic-cdk = { workspace = true }
+ic-stable-structures = { workspace = true }
+ic-oss-types = { path = "../ic_oss_types", version = "1.0.0" }

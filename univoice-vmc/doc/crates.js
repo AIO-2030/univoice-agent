@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["univoice_vmc_backend"];

@@ -1,0 +1,24 @@
+.iptInviteCode {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #1F1F23;
+  border: 1px solid #2C2C39;
+  border-radius: 16px;
+  input {
+    height: 48px;
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+  }
+  input::-webkit-input-placeholder {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 0;
+    padding-left: 10px;
+    font-weight: 400px;
+    color: #3A3A41;
+  }
+}

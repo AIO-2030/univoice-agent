@@ -1,0 +1,5 @@
+var searchIndex = new Map(JSON.parse('[\
+["univoice_vmc_backend",{"t":"FNNNNNNNNHNNNNNNN","n":["StateHeap","_ty","borrow","borrow_mut","clone","clone_into","default","deserialize","from","get_candid_pointer","id","idl_serialize","into","to_owned","try_from","try_into","type_id"],"q":[[0,"univoice_vmc_backend"],[17,"candid::types::internal"],[18,"core::result"],[19,"serde::de"],[20,"std::os::raw"],[21,"candid::types"],[22,"core::any"]],"i":[0,4,4,4,4,4,4,4,4,0,4,4,4,4,4,4,4],"f":"`{{}b}{{{d{c}}}{{d{e}}}{}{}}{{{d{fc}}}{{d{fe}}}{}{}}{{{d{h}}}h}{{{d{c}}{d{fe}}}j{}{}}{{}h}{c{{l{h}}}n}{cc{}}{{}A`}{{}Ab}{{{d{h}}c}{{l{j}}}Ad}{ce{}{}}{{{d{c}}}e{}{}}{c{{l{e}}}{}{}}0{{{d{c}}}Af{}}","D":"d","p":[[5,"Type",17],[1,"reference"],[0,"mut"],[5,"StateHeap",0],[1,"unit"],[6,"Result",18],[10,"Deserializer",19],[8,"c_char",20],[5,"TypeId",17],[10,"Serializer",21],[5,"TypeId",22]],"r":[],"b":[],"c":"OjAAAAAAAAA=","e":"OzAAAAEAAA8AAwAAAAgACgACAA4AAwA="}]\
+]'));
+if (typeof exports !== 'undefined') exports.searchIndex = searchIndex;
+else if (window.initSearch) window.initSearch(searchIndex);

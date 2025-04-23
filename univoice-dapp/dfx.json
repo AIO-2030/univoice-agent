@@ -1,0 +1,67 @@
+{
+  "canisters": {
+    "univoice-dapp-backend": {
+      "candid": "src/univoice-dapp-backend/univoice-dapp-backend.did",
+      "package": "univoice-dapp-backend",
+      "type": "rust"
+    },
+    "univoice-dapp-frontend": {
+      "dependencies": [
+        "univoice-dapp-backend"
+      ],
+      "source": [
+        "src/univoice-dapp-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "src/univoice-dapp-frontend",
+      "frontend": {
+        "entrypoint": "src/univoice-dapp-frontend/dist/index.html"
+      },
+      "assets": {
+        "source": "src/univoice-dapp-frontend/dist",
+        "headers": {
+          "index.html": {
+            "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;"
+          },
+          "*.js": {
+            "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;"
+          },
+          "*.tsx": {
+            "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;"
+          },
+          "*.scss": {
+            "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;"
+          },
+          "*.html": {
+            "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;"
+          },
+          "*.*": {
+            "Content-Security-Policy": "default-src 'self'; connect-src *; worker-src 'self' blob:; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;"
+          }
+        }
+      }
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    },
+    "replica": {
+      "subnet_type": "application"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943"
+    },
+    "ic": {
+      "providers": [
+        "https://ic0.app/"
+      ],
+      "type": "persistent"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

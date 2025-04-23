@@ -1,0 +1,26 @@
+[package]
+name = "ic-oss-types"
+description = "A Rust types library used for integrating with ic-oss cluster."
+publish = true
+repository = "https://github.com/ldclabs/ic-oss/tree/main/src/ic_oss_types"
+version = "1.0.0"
+edition.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license.workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+candid = { workspace = true }
+hex = { workspace = true }
+serde = { workspace = true }
+serde_bytes = { workspace = true }
+crc32fast = { workspace = true }
+num-traits = { workspace = true }
+url = { workspace = true }
+ciborium = { workspace = true }
+icrc-ledger-types = { workspace = true }
+k256 = { workspace = true }
+ed25519-dalek = { workspace = true }
+sha2 = { workspace = true }
+coset = { workspace = true }
