@@ -94,7 +94,7 @@ interface BackendActor {
   get_friend_infos: (principalId: string) => Promise<Array<[any, bigint]>>;
   get_access_token: (principalId: string) => Promise<{ Ok: AccessTokenResponse } | { Err: string }>;
   upload_voice_file: (principal: Principal, folder: string, filename: string, content: Uint8Array, metadataOpt?: Array<[string, string]>) => Promise<{ Ok: null } | { Err: string }>;
-  mark_voice_file_deleted: (fileId: bigint) => Promise<{ Ok: null } | { Err: string }>;
+  delete_voice_file: (fileId: string) => Promise<{ Ok: null } | { Err: string }>;
   list_voice_files: (principalOpt: Principal[], folderIdOpt: number[], createdAfterOpt: bigint[], limitOpt: number[]) => Promise<{ Ok: VoiceOssInfo[] } | { Err: string }>;
   get_voice_file: (fileId: bigint) => Promise<Array<VoiceAssetData> | []>;
   get_cluster_canister: () => Promise<string[]>;
@@ -602,11 +602,11 @@ export async function mark_voice_file_deleted(
         console.log(`Marking voice file as deleted: ${fileId}`);
         const actor = await createActor();
         
-        // Ensure fileId is a bigint
-        const bigintFileId = typeof fileId === 'number' ? BigInt(fileId) : fileId;
+        // Convert fileId to string as required by the backend
+        const fileIdStr = fileId.toString();
         
         // Call the backend function
-        const result = await actor.mark_voice_file_deleted(bigintFileId) as { Ok: null } | { Err: string };
+        const result = await actor.delete_voice_file(fileIdStr) as { Ok: null } | { Err: string };
         
         // Check if the result is valid
         if (result && typeof result === 'object') {
