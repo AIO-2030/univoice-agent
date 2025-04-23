@@ -57,8 +57,8 @@ UniVoice employs a modular architecture built on ICP canisters with distributed 
 ### Core Features
 - [x] AI voice model generation and management
 - [x] Decentralized storage and computing
-- [ ] NFT-based licensing and ownership
-- [ ] Integration with other blockchain networks
+- [x] NFT-based licensing and ownership
+- [] Integration with other blockchain networks
 
 ### Services
 - **update_miner**: Update NFT holder for miner after NFT sale
