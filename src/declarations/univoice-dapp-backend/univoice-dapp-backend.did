@@ -1,0 +1,305 @@
+// Type Definitions
+type Account = record {
+    owner: principal;
+    subaccount: opt vec nat8;
+};
+
+type Account__3 = record {
+    owner: principal;
+    subaccount: opt vec nat8;
+};
+
+type NFTCollection = record {
+    name: text;
+    symbol: text;
+    description: opt text;
+    logo: opt text;
+    supply_cap: opt nat;
+    total_supply: nat;
+    owner: principal;
+    allowed_transfers: bool;
+    expired_at: opt nat64;
+};
+
+type UserNFTHolding = record {
+    owner: principal;
+    nft_colletion_id: text;
+    token_ids: vec nat;
+    expired_at: opt nat64;
+};
+
+type UserLicenseRecord = record {
+    owner: text;
+    nft_collection_id: text;
+    license_name: text;
+    token_id: nat;
+    purchase_time: nat64;
+    expired_at: opt nat64;
+};
+
+type UserNFTsRequest = record {
+    user: text;
+    license_ids: vec text;
+};
+
+type UserNFTsResponse = record {
+    holdings: vec UserNFTHolding;
+};
+
+type BatchInfoItem = record {
+    key: text;
+    content: text;
+};
+
+type CommonInfoCfg = record {
+    key: text;
+    content: text;
+    version: text;
+    isvalid: bool;
+};
+
+type CustomInfo = record {
+    dapp_principal: text;
+    wallet_principal: text;
+    nick_name: text;
+    logo: text;
+    is_invite_code_filled: bool;
+    invite_code: text;
+    used_invite_code: opt text;
+    total_rewards: nat64;
+};
+
+type InviteRewardRecord = record {
+    id: text;
+    invite_code: text;
+    code_owner: text;
+    new_user: text;
+    token_amount: nat;
+    created_at: nat64;
+    is_claimed: bool;
+    claimed_at: opt nat64;
+};
+
+type LicenseFetchResult = variant {
+    Ok: record {
+        vec UserLicenseRecord;
+        NFTCollection;
+    };
+    Err: text;
+};
+
+type Quest = record {
+    quest_id: nat64;
+    quest_name: text;
+    reward_amount: nat64;
+    redirect_url: text;
+    is_completed: bool;
+};
+
+type PolicyResult = variant {
+    Ok: null;
+    Err: text
+};
+
+type InvitedUser = record {
+    dapp_principal: text;
+    wallet_principal: text;
+    nick_name : text;
+    logo : text;
+    reward_amount : nat64;
+};
+
+type InvitedUserResponse = record {
+    total_invited : nat64;
+    users : vec InvitedUser;
+};
+
+type TaskData = record {
+    task_id: text;
+    task_url: text; 
+    status: text;
+    rewards: nat64;
+};
+
+type UserTasks = record {
+    principal_id: text;
+    tasks: vec TaskData;
+};
+
+type TransferFromArgs = record {
+    from: Account;
+    to: Account;
+    amount: nat;
+    fee: opt nat;
+    memo: opt blob;
+    created_at_time: opt nat64;
+    spender_subaccount: opt blob;
+};
+
+type TransferFromError = variant {
+    BadFee: record { expected_fee: nat };
+    BadBurn: record { min_burn_amount: nat };
+    InsufficientFunds: record { balance: nat };
+    InsufficientAllowance: record { allowance: nat };
+    TooOld;
+    CreatedInFuture: record { ledger_time: nat64 };
+    Duplicate: record { duplicate_of: nat };
+    TemporarilyUnavailable;
+    GenericError: record { error_code: nat; message: text };
+};
+
+type BlockIndex = nat;
+
+type Token = record {
+    subject: principal;
+    audience: principal;
+    policies: text;
+};
+
+type FolderInfo = record {
+    id: nat32;
+    files: vec nat32;
+    status: int8;
+    updated_at: nat64;
+    name: text;
+    folders: vec nat32;
+    created_at: nat64;
+    parent: nat32;
+};
+
+type FileInfo = record {
+    id: nat32;
+    status: int8;
+    updated_at: nat64;
+    name: text;
+    size: nat64;
+    content_type: text;
+    created_at: nat64;
+    filled: nat64;
+    chunks: nat32;
+    parent: nat32;
+};
+
+type FileChunk = record {
+    chunk_index: nat32;
+    content: blob;
+};
+
+type VoiceOssInfo = record {
+    file_id: nat32;
+    status: int32;
+    created_at: nat64;
+    updated_at: opt nat64;
+    custom: opt vec record { text; MetadataValue };
+};
+
+type VoiceAssetData = record {
+    principal_id: principal;
+    folder_id: nat32;
+    file_id: nat32;
+    status: int32;
+    created_at: nat64;
+    updated_at: opt nat64;
+    custom: opt vec record { text; MetadataValue };
+};
+
+type MetadataValue = variant {
+    Int: int64;
+    Nat: nat64;
+    Blob: vec nat8;
+    Text: text;
+};
+
+type ListVoiceOssParams = record {
+    principal_id: opt principal;
+    folder_id: opt nat32;
+    prev: opt nat64;
+    take: opt nat32;
+};
+
+type User_tasks = record {
+    principal_id: text;
+    tasks: vec TaskData;
+};
+
+type CanisterMapping = record {
+    key: text;
+    canister_id: text;
+};
+
+// Service Definition
+service : {
+    // Common Info Management
+    "add_info_item": (key: text, content: text) -> (variant { Ok; Err: text; });
+    "get_info_by_key": (key: text) -> (opt CommonInfoCfg) query;
+    "batch_add_info_items": (vec BatchInfoItem) -> (variant { Ok; Err: text; });
+    "batch_get_info": (vec text) -> (vec opt CommonInfoCfg) query;
+    "update_info_item": (key: text, content: text) -> (variant { Ok; Err: text; });
+
+    // Custom Info Management
+    "add_custom_info": (CustomInfo) -> (variant { Ok; Err: text; });
+    "get_custom_info": (opt text, opt text) -> (opt CustomInfo) query;
+    "update_custom_info": (opt text, opt text, text, text) -> (variant { Ok; Err: text; });
+    "list_custom_info": (nat64, nat64) -> (vec CustomInfo) query;
+    "get_invited_users": (opt text, opt text) -> (InvitedUserResponse) query;
+
+    // Canister Mapping Management
+    "add_canister_mapping": (key: text, canister_id: text) -> (variant { Ok; Err: text; });
+    "get_canister_id": (key: text) -> (opt text) query;
+    "get_all_canister_mappings": () -> (vec CanisterMapping) query;
+    "initialize_default_canisters": () -> (variant { Ok; Err: text; });
+    
+    // Frontend Canister Management
+    "set_frontend_canister": (canister_id: text) -> (variant { Ok; Err: text; });
+    "get_frontend_canister": () -> (opt text) query;
+    
+    // Bulklet Canister Management
+    "set_bucket_canister": (canister_id: text) -> (variant { Ok; Err: text; });
+    "get_bucket_canister": () -> (opt text) query;
+    
+    // Cluster Canister Management
+    "set_cluster_canister": (canister_id: text) -> (variant { Ok; Err: text; });
+    "get_cluster_canister": () -> (opt text) query;
+    
+    // Mugc Canister Management
+    "set_mugc_canister": (canister_id: text) -> (variant { Ok; Err: text; });
+    "get_mugc_canister": () -> (opt text) query;
+    
+    // VMC Canister Management
+    "set_vmc_canister": (canister_id: text) -> (variant { Ok; Err: text; });
+    "get_vmc_canister": () -> (opt text) query;
+
+    // user tasks
+    "get_user_tasks": (principal_id: text) -> (opt vec TaskData);
+    "update_task_status": (principal_id: text, task_id: text, status: text) -> (variant { Ok; Err: text; });
+    
+    // Invite Code Management
+    "use_invite_code": (code: text, new_user_prinpalid: text) -> (variant { Ok: InviteRewardRecord; Err: text; });
+    "claim_reward": (opt text, opt text, nat64) -> (bool);
+    "get_user_rewards": (user_principal: text) -> (vec InviteRewardRecord) query;
+    "get_unclaimed_rewards": (user_principal: text) -> (nat) query;
+    
+    // NFT Management
+    "get_user_nfts": (UserNFTsRequest) -> (variant { Ok: UserNFTsResponse; Err: text; });
+    "get_nft_collection": (collection_id: text) -> (variant { Ok: NFTCollection; Err: text; });
+    "buy_nft_license": (buyer: text, collection_id: text, quantity: nat64) -> (LicenseFetchResult);
+
+    //ic_oss
+    "attach_policies": (text, text, text, text) -> (PolicyResult);
+    "detach_policies": (text, text, text, text) -> (PolicyResult);
+    "get_access_token": (wallet_principal: text) -> (variant { Ok: record { access_token: text; folder: text }; Err: text; });
+
+    // Token Claiming
+    "claim_tokens": (principal_id: text) -> (variant { Ok: nat; Err: text; });
+    // Friend Information
+    "get_friend_infos": (owner_principal: text) -> (vec record { CustomInfo; nat }) query;
+
+    // Token Transfer
+    "transfer_tokens_to_user": (text, nat) -> (variant { Ok: nat; Err: text; });
+
+    // Voice File Management
+    "upload_voice_file": (principal, text, text, vec nat8, opt vec record { text; text }) -> (variant { Ok; Err: text; });
+    "delete_voice_file": (text) -> (variant { Ok; Err: text; });
+    "list_voice_files": (opt principal, opt text, opt nat32, opt nat32) -> (vec VoiceOssInfo) query;
+    "get_voice_file": (nat64) -> (opt VoiceAssetData) query;
+};

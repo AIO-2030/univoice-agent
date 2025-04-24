@@ -1,0 +1,131 @@
+type ComfyUINode =
+  record {
+    node_id:opt nat;
+    ori_url:text;
+    ws_url:text;
+    weight:int;
+  };
+
+type AGIWkFlowNode =
+   record {
+      agi_id:text;
+      wk_flow:text;
+   };
+type AGIAssetresult = 
+  record {
+    res_code:text;
+    res_message:text;
+  };
+
+type Timestamp = nat64;
+
+type ComfyUIPayload =
+  record {
+    promt_id:text;
+    client_id:text;
+    ai_node:text;
+    app_info:text;
+    wk_id:text;
+    voice_key:text;
+    deduce_asset_key:text;
+    status:text;
+    gmt_datatime:Timestamp
+  };
+type Result = variant { Ok : nat; Err : text };
+
+type WorkLoadInitParam = 
+  record {
+    poll_account:text;
+    nft_collection_id:text;
+    token_block:nat;
+  };
+
+type BlockIndex = nat;
+type NumTokens = nat;
+
+type MinerTxState = variant {
+   Prepared:text;
+   Claimed:text
+};
+type WorkLoadLedgerItem =
+  record {
+    wkload_id : BlockIndex;
+    work_load : ComfyUIPayload;
+    block_tokens: NumTokens;
+    token_pool:text;
+    nft_pool:text;
+    mining_status : MinerTxState
+  };
+
+  type WorkflowLedgerStatus = variant {
+      WAIT_IDENTITY;
+      IDENTITY_SUCCESS;
+      IDENTITY_FAIL;
+      WAIT_CLAIM;
+    };
+
+  type WorkflowLedgerItem = record {
+      principal_id: text;
+      client_id: text;
+      workflow_id: text;
+      timestamp: Timestamp;
+      identity_timestamp: Timestamp;
+      token_reward: NumTokens;
+      status: WorkflowLedgerStatus;
+   };
+ 
+type Subscriber = record {
+    topic:text;
+  };
+
+
+
+type MixComfyErr = 
+   variant {
+      NoneNodeVaild:text;
+      RuntimeErr:text;
+   };
+
+type WorkLoadReceipt = 
+    variant {
+      Err:MixComfyErr;
+      Ok:WorkLoadLedgerItem;
+    };
+
+type UploaderPowContractInput = record {
+    sample_output: text;
+    identity_gusserr_limit: float64;
+    workflow_id: text;
+  };
+
+type Account = record { owner : principal; subaccount : opt blob };
+type TransferArgs = record { to_account : Account; amount : nat };
+
+type UploaderPowContract = record {
+  sample_output: vec nat32;
+  identity_gusserr_limit: float64;
+  workflow_id: text;
+};
+
+
+
+service : {
+    "greet": (text) -> (text) query;
+    "query_comfy_nodes":() -> (opt vec ComfyUINode);
+    "reg_comfy_nodes":(vec ComfyUINode) ->(opt vec ComfyUINode);
+    "gen_ai_node_router":() ->(opt ComfyUINode);
+    "export_minting_contract":() -> (opt WorkLoadInitParam);
+    "update_minting_contract":(WorkLoadInitParam) -> (opt WorkLoadInitParam);
+    "push_workload_record":(ComfyUIPayload) -> (WorkLoadReceipt);
+    "query_curr_workload":() ->(opt vec WorkLoadLedgerItem);
+    "subscribe": (subscriber:Subscriber) -> ();
+    "store_workflow_data": (text, text) -> (variant { Ok: text; Err: text });
+    "fetch_workflow_data": (text) -> (text) query;
+    "store_uploader_pow_contract": (UploaderPowContractInput) -> (variant { Ok; Err: text });
+    "query_workflow_ledger_by_principal_id": (text) -> (variant { Ok: vec WorkflowLedgerItem; Err: text }) query;
+    "export_all_uploader_pow_contracts": () -> (vec UploaderPowContract) query;
+    "query_wait_identity_workflows": () -> (vec text) query;
+    "query_wait_training_workflows": () -> (vec text) query;
+    "get_voice_data": () -> (variant { Ok: record { principal_id: principal; folder_id: nat32; file_id: nat32; status: int8; created_at: nat64; updated_at: nat64; custom: opt vec record { text; variant { Int: int64; Nat: nat64; Blob: blob; Text: text } }; content: opt text }; Err: text });
+    "set_oss_bucket_canister": (principal) -> ();
+}

@@ -1,0 +1,82 @@
+{
+  "canisters": {
+    "univoice-vmc-backend": {
+      "candid": "univoice-vmc/src/univoice-vmc-backend/univoice-vmc-backend.did",
+      "package": "univoice-vmc-backend",
+      "type": "rust",
+      "dependencies": [
+        "icrc1_ledger_canister"
+      ],
+      "specified_id": "b77ix-eeaaa-aaaaa-qaada-cai",
+      "metadata": [
+        {
+          "name": "candid:service"
+        }
+      ]
+    },
+    "univoice-vmc-frontend": {
+      "dependencies": [
+        "univoice-vmc-backend"
+      ],
+      "source": [
+        "univoice-vmc/src/univoice-vmc-frontend/dist"
+      ],
+      "metadata": [
+        {
+          "name": "candid:service"
+        }
+      ],
+      "type": "assets",
+      "workspace": "univoice-vmc-frontend"
+    },
+    "icrc1_index_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/index-ng/index-ng.did",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-index-ng.wasm.gz"
+    },
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
+      "specified_id": "mxzaz-hqaaa-aaaar-qaada-cai"  
+    },
+    "mugc-agc-backend": {
+      "candid": "mugc-agc/src/mugc-agc-backend/mugc-agc-backend.did",
+      "package": "mugc-agc-backend",
+      "type": "rust",
+      "specified_id": "bw4dl-smaaa-aaaaa-qaacq-cai"
+    },
+    "mugc-agc-frontend": {
+      "dependencies": [
+        "mugc-agc-backend"
+      ],
+      "source": [
+        "mugc-agc/src/mugc-agc-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "mugc-agc-frontend"
+    }
+        
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    },
+    "replica": {
+      "subnet_type": "application"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943"
+    },
+    "ic": {
+      "providers": ["https://ic0.app/"],
+      "type": "persistent"
+    }
+  },
+  
+  "output_env_file": ".env",
+  "version": 1
+}
